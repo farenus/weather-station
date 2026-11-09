@@ -16,3 +16,7 @@ dev = [
     "micropython-esp32-stubs>=1.29.0.post1",
     "mpremote>=1.29.0",
 ]
+
+[tool.pyright]
+reportMissingModuleSource = "none"
+extraPaths = ["src/lib"]

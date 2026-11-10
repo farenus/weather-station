@@ -1,7 +1,14 @@
 import bme280_float
 import machine
 
-i2c = machine.I2C(0, sda=machine.Pin(8), scl=machine.Pin(9), freq=400000)
+import config
+
+i2c = machine.I2C(
+    config.I2C_ID,
+    sda=machine.Pin(config.PIN_SDA),
+    scl=machine.Pin(config.PIN_SCL),
+    freq=config.I2C_FREQ,
+)
 
 sensor = bme280_float.BME280(i2c=i2c)
 

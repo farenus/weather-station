@@ -1,2 +1,6 @@
 WLAN_SSID = ""
 WLAN_PASSWORD = ""
+
+API_URL = ""
+API_KEY_HEADER = ""
+API_KEY = ""

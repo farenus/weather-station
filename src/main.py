@@ -1,10 +1,16 @@
 import time
 
+import api
+import config
 import measurement
 import wifi
 
 wifi.connect()
 
 while True:
-    print(measurement.get())
-    time.sleep(5)
+    try:
+        status = api.post(measurement.get())
+        print(f"http status: {status}")
+    except OSError as e:
+        print(e)
+    time.sleep(config.SEND_INTERVAL)

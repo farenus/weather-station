@@ -1,0 +1,2 @@
+WLAN_SSID = ""
+WLAN_PASSWORD = ""

@@ -6,7 +6,7 @@ __pycache__/
 .venv
 
 # Secrets
-secrets.py
+secrets_config.py
 
 # VS Code
 .vscode/

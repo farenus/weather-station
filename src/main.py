@@ -1,33 +1,16 @@
 import time
 
-import bme280_float
-import machine
-
+import api
 import config
+import measurement
+import wifi
 
-i2c = machine.I2C(
-    config.I2C_ID,
-    sda=machine.Pin(config.PIN_SDA),
-    scl=machine.Pin(config.PIN_SCL),
-    freq=config.I2C_FREQ,
-)
-
-sensor = bme280_float.BME280(i2c=i2c)
-
-
-def read_sensor():
-    return tuple(sensor.read_compensated_data())
-
-
-def read_measurement():
-    temperature, pressure, humidity = read_sensor()
-    return {
-        "temperature": round(temperature, 2),
-        "pressure": round(pressure / 100, 2),
-        "humidity": round(humidity, 1),
-    }
-
+wifi.connect()
 
 while True:
-    print(read_measurement())
-    time.sleep(5)
+    try:
+        status = api.post(measurement.get())
+        print(f"http status: {status}")
+    except OSError as e:
+        print(e)
+    time.sleep(config.SEND_INTERVAL)

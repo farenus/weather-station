@@ -1,6 +1,18 @@
 # weather-station
 
-firmware micropython dla stacji pogodowej opartej na ESP32-S3 z czujnikiem BME280
+firmware micropython dla stacji pogodowej opartej na ESP32-S3, wysyłający pomiary do API.
+
+## Konfiguracja
+
+Skopiuj `src/secrets_config.example.py` do `src/secrets_config.py` i uzupełnij zmienne.
+
+## Zależności
+
+Biblioteka `requests` obsługuje komunikację HTTP.
+
+```bash
+uv run mpremote mip install requests
+```
 
 ## Podziękowania
 

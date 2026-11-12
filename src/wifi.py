@@ -17,12 +17,4 @@ def connect(timeout=15):
             nic.disconnect()
             raise RuntimeError("nie udało się połączyć z wifi")
         time.sleep(0.5)
-    ip, netmask, gateway, dns = nic.ifconfig()
-    print(
-        f"ip: {ip}",
-        f"netmask: {netmask}",
-        f"gateway: {gateway}",
-        f"dns: {dns}",
-        sep="\n",
-    )
     return nic

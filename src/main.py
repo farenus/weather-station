@@ -1,5 +1,4 @@
-import time
-
+import machine
 import network
 
 import api
@@ -8,11 +7,13 @@ import measurement
 import wifi
 
 nic = wifi.connect()
-print(
-    f"ip: {nic.ifconfig()[0]}",
-    f"dns: {nic.ifconfig()[3]}",
-    sep="\n",
-)
+
+if machine.reset_cause() != machine.DEEPSLEEP_RESET:
+    print(
+        f"ip: {nic.ifconfig()[0]}",
+        f"dns: {nic.ifconfig()[3]}",
+        sep="\n",
+    )
 
 while True:
     try:
@@ -25,4 +26,4 @@ while True:
         print(e)
     finally:
         network.WLAN(network.STA_IF).active(False)
-    time.sleep(config.SEND_INTERVAL)
+    machine.deepsleep(config.SEND_INTERVAL * 1000)

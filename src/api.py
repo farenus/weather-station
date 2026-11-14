@@ -8,6 +8,7 @@ def post(data):
         config.API_URL,
         json=data,
         headers={config.API_KEY_HEADER: config.API_KEY},
+        timeout=10,
     )
     try:
         return response.status_code
